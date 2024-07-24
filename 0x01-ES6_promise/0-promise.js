@@ -1,4 +1,4 @@
-function getResponseFromAPI() {
+export default function getResponseFromAPI() {
 	return new Promise((resolve, reject) => {
 	  // Simulate an asynchronous operation (e.g., API call)
 	  setTimeout(() => {
