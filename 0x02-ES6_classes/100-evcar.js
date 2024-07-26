@@ -1,7 +1,7 @@
 // Import the Car class from 10-car.js (assuming it exists)
 import Car from "./10-car.js"
 
-class EVCar extends Car {
+export default class EVCar extends Car {
     constructor(brand, motor, color, range) {
         super(); // Call the constructor of the superclass (Car)
         this._brand = brand;
