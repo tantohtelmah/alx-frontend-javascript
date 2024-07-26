@@ -2,18 +2,12 @@ const cloneSymbol = Symbol('clone');
 
 export default class Car {
   constructor(brand, motor, color) {
-    this._brand = this._validateString(brand, 'brand');
-    this._motor = this._validateString(motor, 'motor');
-    this._color = this._validateString(color, 'color');
+    this._brand = brand
+    this._motor = motor
+    this._color = color
   }
 
-  // Type validation method
-  _validateString(value, attributeName) {
-    if (typeof value !== 'string') {
-      throw new TypeError(`${attributeName} must be a string`);
-    }
-    return value;
-  }
+ 
 
   // Getter for brand
   get brand() {
