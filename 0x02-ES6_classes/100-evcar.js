@@ -1,5 +1,5 @@
 // Import the Car class from 10-car.js (assuming it exists)
-const Car = require('./10-car');
+import Car from "./10-car.js"
 
 class EVCar extends Car {
     constructor(brand, motor, color, range) {
