@@ -1,25 +1,28 @@
-// Create a WeakMap to track query counts for each endpoint
+// Create a WeakMap to track query counts
 const weakMap = new WeakMap();
 
-// Define the queryAPI function
-export default function queryAPI(endpoint) {
-  // Initialize query count for the endpoint (if not already set)
-  if (!weakMap.has(endpoint)) {
-    weakMap.set(endpoint, 0);
-  }
+// Export the weakMap
+export { weakMap };
 
-  // Increment the query count
-  const queryCount = weakMap.get(endpoint) + 1;
-  weakMap.set(endpoint, queryCount);
+// Function to query the API
+export function queryAPI(endpoint) {
+    // Initialize query count for this endpoint
+    if (!weakMap.has(endpoint)) {
+        weakMap.set(endpoint, 0);
+    }
 
-  // Check if query count exceeds the threshold
-  if (queryCount >= 5) {
-    throw new Error('Endpoint load is high');
-  }
+    // Increment query count
+    const queryCount = weakMap.get(endpoint) + 1;
+    weakMap.set(endpoint, queryCount);
 
-  // Perform API query logic here (not shown in this snippet)
-  // ...
+    // Check if query count exceeds the threshold
+    if (queryCount >= 5) {
+        throw new Error("Endpoint load is high");
+    }
 
-  // Return the result of the API query
-  // ...
+    // Perform API query (replace with actual implementation)
+    // ...
+
+    // Return API response (replace with actual response)
+    return "API response";
 }
