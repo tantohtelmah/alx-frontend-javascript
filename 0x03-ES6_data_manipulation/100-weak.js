@@ -1,29 +1,25 @@
-// Create a WeakMap to track query counts
+// Create a WeakMap to track query counts for each endpoint
 const weakMap = new WeakMap();
 
-// Export the queryAPI function
-export function queryAPI(endpoint) {
-    if (!endpoint || typeof endpoint !== 'object' || !endpoint.protocol || !endpoint.name) {
-        throw new Error('Invalid endpoint format');
-    }
+// Define the queryAPI function
+export default function queryAPI(endpoint) {
+  // Initialize query count for the endpoint (if not already set)
+  if (!weakMap.has(endpoint)) {
+    weakMap.set(endpoint, 0);
+  }
 
-    // Initialize query count for this endpoint
-    if (!weakMap.has(endpoint)) {
-        weakMap.set(endpoint, 0);
-    }
+  // Increment the query count
+  const queryCount = weakMap.get(endpoint) + 1;
+  weakMap.set(endpoint, queryCount);
 
-    // Increment query count
-    const queryCount = weakMap.get(endpoint) + 1;
-    weakMap.set(endpoint, queryCount);
+  // Check if query count exceeds the threshold
+  if (queryCount >= 5) {
+    throw new Error('Endpoint load is high');
+  }
 
-    // Check if query count exceeds the threshold
-    if (queryCount >= 5) {
-        throw new Error('Endpoint load is high');
-    }
+  // Perform API query logic here (not shown in this snippet)
+  // ...
 
-    // Perform API query logic here...
-    // (Placeholder code)
-
-    // Return the result of the API query
-    return `Query successful for ${endpoint.name}`;
+  // Return the result of the API query
+  // ...
 }
