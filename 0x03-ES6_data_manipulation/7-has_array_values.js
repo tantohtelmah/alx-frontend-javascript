@@ -1,6 +1,6 @@
-export function hasValuesFromArray(set, arr) {
-    for (const element of arr) {
-        if (!set.has(element)) {
+export default function hasValuesFromArray(inputSet, inputArray) {
+    for (const element of inputArray) {
+        if (!inputSet.has(element)) {
             return false;
         }
     }
